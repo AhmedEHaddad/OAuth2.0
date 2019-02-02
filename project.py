@@ -116,11 +116,11 @@ def gconnect():
     params = {'access_token': credentials.access_token, 'alt': 'json'}
     answer = requests.get(userinfo_url, params=params)
 
-    #data = answer.json()
-    data = json.loads(answer.txt)
+    data = answer.json()
+    #data = json.loads(answer.txt)
 
-    login_session['username'] = data['name']
-    #login_session['picture'] = data['picture']
+    login_session['username'] = data['email'] #work around the no redirect issue(keyError:name)
+    login_session['picture'] = data['picture']
     login_session['email'] = data['email']
 
     output = ''
